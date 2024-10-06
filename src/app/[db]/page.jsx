@@ -40,7 +40,7 @@ export default async function Page({ params: { db } }) {
       </Table>
     );
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return <p>Counld not fetch test details</p>;
   }
 }

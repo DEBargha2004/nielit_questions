@@ -19,7 +19,7 @@ export default async function getTests(db) {
     `FROM information_schema.COLUMNS where TABLE_NAME='test' and TABLE_SCHEMA='${db}`,
   );
 
-  console.log({ injection });
+  // console.log({ injection });
 
   //fetch columns details
   const res = await fetch(
@@ -47,7 +47,7 @@ export default async function getTests(db) {
     remainingColumns,
   ).concat(`FROM ${db}.test where '1'='1`);
 
-  console.log({ injection });
+  // console.log({ injection });
 
   //fetch test details
   const res2 = await fetch(
